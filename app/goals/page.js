@@ -15,7 +15,7 @@ export default function GoalsPage() {
 
   useEffect(() => {
     // Auth check - redirect to login if no session
-    const session = localStorage.getItem('kleosai_session');
+    const session = localStorage.getItem('finai_session');
     if (!session) {
       window.location.href = '/login';
       return;

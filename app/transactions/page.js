@@ -15,13 +15,13 @@ export default function TransactionsPage() {
 
   useEffect(() => {
     // Auth check - redirect to login if no session
-    const session = localStorage.getItem('kleosai_session');
+    const session = localStorage.getItem('finai_session');
     if (!session) {
       window.location.href = '/login';
       return;
     }
 
-    const savedCurrency = localStorage.getItem('kleosai_currency') || 'INR';
+    const savedCurrency = localStorage.getItem('finai_currency') || 'INR';
     setGlobalCurrency(savedCurrency);
 
     const handleCurrencyUpdate = () => {
