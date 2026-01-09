@@ -34,10 +34,10 @@ export default function RegisterPage() {
       const token = await user.getIdToken();
 
       // SESSION PERSISTENCE
-      localStorage.setItem('finai_session', token);
-      localStorage.setItem('finai_user_email', user.email);
-      localStorage.setItem('finai_user_uid', user.uid);
-      localStorage.setItem('finai_user_name', formData.name);
+      localStorage.setItem('kleosai_session', token);
+      localStorage.setItem('kleosai_user_email', user.email);
+      localStorage.setItem('kleosai_user_uid', user.uid);
+      localStorage.setItem('kleosai_user_name', formData.name);
 
       // Success: Take them to dashboard
       window.location.href = '/dashboard';
