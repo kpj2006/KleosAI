@@ -11,6 +11,13 @@ import {
   Chrome,
   AlertCircle 
 } from 'lucide-react';
+import { auth } from '@/lib/firebase';
+import { 
+  signInWithEmailAndPassword, 
+  signInWithPopup, 
+  GoogleAuthProvider,
+  GithubAuthProvider 
+} from 'firebase/auth';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -24,44 +31,99 @@ export default function LoginPage() {
     setError('');
 
     try {
-      /* FIX: Pointing to the correct auth path. 
-         Terminal logs show 404s for /api/ai because that route is likely missing.
-      */
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      /* DEFENSIVE CHECK: If the server returns an HTML error page (starts with '<'),
-         this block prevents the JSON parsing crash.
-      */
-      if (!response.ok) {
-        // If it's a 404, the API route doesn't exist at the specified path
-        if (response.status === 404) {
-          throw new Error("Login service not found (404). Check your API route path.");
-        }
-
-        // Try to get JSON error, otherwise fallback to status text
-        const contentType = response.headers.get("content-type");
-        if (contentType && contentType.includes("application/json")) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || 'Invalid credentials');
-        } else {
-          throw new Error(`Server Error: ${response.status}. Please check terminal logs.`);
-        }
-      }
-
-      const data = await response.json();
+      // Firebase Authentication - Email/Password Sign In
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      
+      // Get Firebase ID token
+      const token = await user.getIdToken();
 
       // SESSION PERSISTENCE
-      localStorage.setItem('finai_session', data.token);
+      localStorage.setItem('finai_session', token);
+      localStorage.setItem('finai_user_email', user.email);
+      localStorage.setItem('finai_user_uid', user.uid);
       
       // Redirect to dashboard on success
       window.location.href = '/dashboard';
       
     } catch (err) {
-      // This will now show the actual error message instead of the JSON token error
+      // Firebase error handling
+      let errorMessage = 'An error occurred during login';
+      
+      switch (err.code) {
+        case 'auth/invalid-email':
+          errorMessage = 'Invalid email address';
+          break;
+        case 'auth/user-disabled':
+          errorMessage = 'This account has been disabled';
+          break;
+        case 'auth/user-not-found':
+          errorMessage = 'No account found with this email';
+          break;
+        case 'auth/wrong-password':
+          errorMessage = 'Incorrect password';
+          break;
+        case 'auth/invalid-credential':
+          errorMessage = 'Invalid credentials. Please check your email and password';
+          break;
+        default:
+          errorMessage = err.message;
+      }
+      
+      setError(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setIsLoading(true);
+    setError('');
+    
+    try {
+      const provider = new GoogleAuthProvider();
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      
+      // Get Firebase ID token
+      const token = await user.getIdToken();
+      
+      // SESSION PERSISTENCE
+      localStorage.setItem('finai_session', token);
+      localStorage.setItem('finai_user_email', user.email);
+      localStorage.setItem('finai_user_uid', user.uid);
+      
+      // Redirect to dashboard on success
+      window.location.href = '/dashboard';
+      
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGithubSignIn = async () => {
+    setIsLoading(true);
+    setError('');
+    
+    try {
+      const provider = new GithubAuthProvider();
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+      
+      // Get Firebase ID token
+      const token = await user.getIdToken();
+      
+      // SESSION PERSISTENCE
+      localStorage.setItem('finai_session', token);
+      localStorage.setItem('finai_user_email', user.email);
+      localStorage.setItem('finai_user_uid', user.uid);
+      
+      // Redirect to dashboard on success
+      window.location.href = '/dashboard';
+      
+    } catch (err) {
       setError(err.message);
     } finally {
       setIsLoading(false);
@@ -154,10 +216,20 @@ export default function LoginPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <button className="flex items-center justify-center gap-3 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition-all">
+            <button 
+              type="button"
+              onClick={handleGoogleSignIn}
+              disabled={isLoading}
+              className="flex items-center justify-center gap-3 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all disabled:opacity-50"
+            >
               <Chrome size={18} /> Google
             </button>
-            <button className="flex items-center justify-center gap-3 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition-all">
+            <button 
+              type="button"
+              onClick={handleGithubSignIn}
+              disabled={isLoading}
+              className="flex items-center justify-center gap-3 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all disabled:opacity-50"
+            >
               <Github size={18} /> GitHub
             </button>
           </div>
