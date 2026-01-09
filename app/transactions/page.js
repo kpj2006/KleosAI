@@ -14,6 +14,13 @@ export default function TransactionsPage() {
   const { transactions, addTransaction, deleteTransaction, isLoaded } = useTransactions();
 
   useEffect(() => {
+    // Auth check - redirect to login if no session
+    const session = localStorage.getItem('finai_session');
+    if (!session) {
+      window.location.href = '/login';
+      return;
+    }
+
     const savedCurrency = localStorage.getItem('finai_currency') || 'INR';
     setGlobalCurrency(savedCurrency);
 
