@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 1. ADAPTIVE THEME VARIABLES 
+   Ensures the base colors shift naturally between light and dark 
+*/
+:root {
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 248, 250, 252; /* Crisp Slate for Day Mode */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 241, 245, 249;
+    --background-start-rgb: 2, 6, 23; /* Deep Space for Night Mode */
+  }
+}
+
+@layer base {
+  body {
+    @apply antialiased selection:bg-indigo-500/30 transition-colors duration-700;
+    color: rgb(var(--foreground-rgb));
+  }
+}
+
+@layer components {
+  /* 2. ADAPTIVE MESH BACKGROUND 
+     Matches the glowing aesthetic of your landing page while avoiding muddy light-mode colors
+  */
+  .mesh-gradient {
+    @apply min-h-screen transition-colors duration-700;
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(253,16%,7%,0.03) 0, transparent 50%), 
+      radial-gradient(at 50% 0%, hsla(225,39%,30%,0.03) 0, transparent 50%);
+  }
+
+  .dark .mesh-gradient {
+    background-color: #020617;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0, transparent 50%), 
+      radial-gradient(at 50% 0%, rgba(124, 58, 237, 0.1) 0, transparent 50%), 
+      radial-gradient(at 100% 0%, rgba(219, 39, 119, 0.1) 0, transparent 50%);
+  }
+
+  /* 3. UNIVERSAL GLASS PANEL UTILITY 
+     FIX: Replaced hardcoded 'bg-white/50' with adaptive opacity to fix Day Mode 'oddness'
+  */
+  .glass-panel {
+    @apply bg-white/70 dark:bg-slate-950/40 backdrop-blur-2xl 
+           border border-white/80 dark:border-slate-800/50 
+           shadow-xl shadow-slate-200/40 dark:shadow-none 
+           transition-all duration-500;
+  }
+
+  /* 4. HIGH-CONTRAST TEXT UTILITY 
+     Ensures labels like 'mobile' or 'trip' stay visible regardless of theme
+  */
+  .text-glass {
+    @apply text-slate-900 dark:text-white drop-shadow-sm font-black;
+  }
+
+  /* 5. VIBRANT GRADIENT TEXT 
+     Used for high-impact headlines in your Hero section
+  */
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500;
+  }
+}
+
+/* 6. NEON PROGRESS BAR GLOW
+   Provides the premium 'FinAI' glowing effect for Goal Targets
+*/
+.neon-glow {
+  @apply shadow-[0_0_15px_rgba(99,102,241,0.5)];
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
