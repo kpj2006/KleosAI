@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Mail, Lock, User, ArrowRight, Sparkles, AlertCircle } from 'lucide-react';
+import { auth } from '@/lib/firebase';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -15,20 +17,53 @@ export default function RegisterPage() {
     setError('');
 
     try {
-      // FIX: Matches the backend folder path app/api/auth/register/route.js
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+      // Firebase Authentication - Create new user
+      const userCredential = await createUserWithEmailAndPassword(
+        auth, 
+        formData.email, 
+        formData.password
+      );
+      const user = userCredential.user;
+
+      // Update user profile with name
+      await updateProfile(user, {
+        displayName: formData.name
       });
 
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Registration failed');
+      // Get Firebase ID token
+      const token = await user.getIdToken();
 
-      // Success: Take them to login page
-      window.location.href = '/login';
+      // SESSION PERSISTENCE
+      localStorage.setItem('finai_session', token);
+      localStorage.setItem('finai_user_email', user.email);
+      localStorage.setItem('finai_user_uid', user.uid);
+      localStorage.setItem('finai_user_name', formData.name);
+
+      // Success: Take them to dashboard
+      window.location.href = '/dashboard';
+      
     } catch (err) {
-      setError(err.message);
+      // Firebase error handling
+      let errorMessage = 'An error occurred during registration';
+      
+      switch (err.code) {
+        case 'auth/email-already-in-use':
+          errorMessage = 'This email is already registered';
+          break;
+        case 'auth/invalid-email':
+          errorMessage = 'Invalid email address';
+          break;
+        case 'auth/operation-not-allowed':
+          errorMessage = 'Email/password accounts are not enabled';
+          break;
+        case 'auth/weak-password':
+          errorMessage = 'Password should be at least 6 characters';
+          break;
+        default:
+          errorMessage = err.message;
+      }
+      
+      setError(errorMessage);
       setIsLoading(false);
     }
   };
