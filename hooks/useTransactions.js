@@ -34,7 +34,7 @@ export function useTransactions() {
   const addTransaction = (formData) => {
     const newTx = {
       ...formData,
-      id: `tx_${Date.now()}`, // Generate unique ID for demo
+      id: formData.id || `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`, // Use existing ID or generate unique ID
       amount: parseFloat(formData.amount),
       date: formData.date || new Date().toISOString().split('T')[0],
     };

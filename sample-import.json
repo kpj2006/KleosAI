@@ -1,0 +1,34 @@
+[
+  {
+    "date": "2026-01-13T14:25:00Z",
+    "amount": 899,
+    "currency": "INR",
+    "merchant": "Netflix",
+    "category": "Subscription",
+    "type": "Debit"
+  },
+  {
+    "date": "2026-01-12T10:30:00Z",
+    "amount": 5000,
+    "currency": "INR",
+    "merchant": "Freelance Payment",
+    "category": "Income",
+    "type": "Credit"
+  },
+  {
+    "date": "2026-01-11T18:45:00Z",
+    "amount": 1250,
+    "currency": "INR",
+    "merchant": "Amazon",
+    "category": "Shopping",
+    "type": "Debit"
+  },
+  {
+    "date": "2026-01-10T09:15:00Z",
+    "amount": 450,
+    "currency": "INR",
+    "merchant": "Uber",
+    "category": "Transport",
+    "type": "Debit"
+  }
+]
