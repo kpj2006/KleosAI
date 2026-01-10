@@ -168,7 +168,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="admin@heisenbucks.com"
+                  placeholder="admin@schrodingerdevs.com"
                   className="input-modern pl-12"
                 />
               </div>
