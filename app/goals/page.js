@@ -14,6 +14,13 @@ export default function GoalsPage() {
   const [globalCurrency, setGlobalCurrency] = useState('INR');
 
   useEffect(() => {
+    // Auth check - redirect to login if no session
+    const session = localStorage.getItem('finai_session');
+    if (!session) {
+      window.location.href = '/login';
+      return;
+    }
+
     // Initial sync from localStorage
     const savedCurrency = localStorage.getItem('kleosai_currency') || 'INR';
     setGlobalCurrency(savedCurrency);
