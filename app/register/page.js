@@ -34,10 +34,10 @@ export default function RegisterPage() {
       const token = await user.getIdToken();
 
       // SESSION PERSISTENCE
-      localStorage.setItem('kleosai_session', token);
-      localStorage.setItem('kleosai_user_email', user.email);
-      localStorage.setItem('kleosai_user_uid', user.uid);
-      localStorage.setItem('kleosai_user_name', formData.name);
+      localStorage.setItem('finai_session', token);
+      localStorage.setItem('finai_user_email', user.email);
+      localStorage.setItem('finai_user_uid', user.uid);
+      localStorage.setItem('finai_user_name', formData.name);
 
       // Success: Take them to dashboard
       window.location.href = '/dashboard';
@@ -111,7 +111,7 @@ export default function RegisterPage() {
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   required 
-                  placeholder="admin@Schrödinger Devs.com"
+                  placeholder="admin@schrodingerdevs.com"
                   className="input-modern pl-12"
                 />
               </div>
