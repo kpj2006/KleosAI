@@ -103,7 +103,7 @@ export default function TransactionsPage() {
         <div>
           <h1 className="text-5xl font-bold tracking-tight text-slate-100">Transactions</h1>
           <p className="text-slate-400 font-normal">
-            Ledger for <span className="text-emerald-400 font-semibold">Team Heisenbucks</span> in {globalCurrency}
+            Ledger for <span className="text-emerald-400 font-semibold">Team Schrödinger Devs</span> in {globalCurrency}
           </p>
         </div>
       </header>

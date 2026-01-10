@@ -73,7 +73,7 @@ export default function DashboardPage() {
             <div>
               <h1 className="text-5xl font-bold tracking-tight text-slate-100">Wealth Overview</h1>
               <p className="text-slate-400 font-normal">
-                Strategic Ledger for <span className="text-emerald-400 font-semibold">Team Heisenbucks</span> in {globalCurrency}
+                Strategic Ledger for <span className="text-emerald-400 font-semibold">Team Schrödinger Devs</span> in {globalCurrency}
               </p>
             </div>
           </div>

@@ -40,7 +40,7 @@ module.exports = {
         float: 'float 3s ease-in-out infinite',
         'fade-in': 'fade-in 0.5s ease-out',
       },
-      // Modern green/teal color palette for Team Heisenbucks
+      // Modern green/teal color palette for Team Schrödinger Devs
       colors: {
         brand: {
           emerald: {

@@ -24,7 +24,7 @@ export async function POST(request) {
 
     // 3. THE "GROWTH MENTOR" SYSTEM PROMPT
     const systemPrompt = `
-      You are 'The Growth Mentor', a premium AI financial strategist for 'Team Heisenbucks'. 
+      You are 'The Growth Mentor', a premium AI financial strategist for 'Team Schrödinger Devs'. 
       Your tone is empowering, data-driven, and highly professional.
       
       TASK: Analyze the provided transaction history: ${JSON.stringify(data)}

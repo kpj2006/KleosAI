@@ -76,7 +76,7 @@ export default function RegisterPage() {
             <Sparkles size={14} /> Join KleosAI
           </div>
           <h1 className="text-5xl font-bold tracking-tight text-slate-100 mb-2">Create Account</h1>
-          <p className="text-slate-400 font-normal">Start your journey with Team Heisenbucks.</p>
+          <p className="text-slate-400 font-normal">Start your journey with Team Schrödinger Devs.</p>
         </div>
 
         <div className="card-modern p-8 md:p-12 rounded-3xl">
@@ -111,7 +111,7 @@ export default function RegisterPage() {
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   required 
-                  placeholder="admin@heisenbucks.com"
+                  placeholder="admin@schrodingerdevs.com"
                   className="input-modern pl-12"
                 />
               </div>

@@ -116,7 +116,7 @@ export default function Navbar() {
                   <User size={14} />
                 </div>
                 <span className="text-xs font-semibold text-slate-300">
-                  Team Heisenbucks
+                  Team Schrödinger Devs
                 </span>
               </div>
 
