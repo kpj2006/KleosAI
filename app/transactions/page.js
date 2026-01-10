@@ -14,11 +14,11 @@ export default function TransactionsPage() {
   const { transactions, addTransaction, deleteTransaction, isLoaded } = useTransactions();
 
   useEffect(() => {
-    const savedCurrency = localStorage.getItem('finai_currency') || 'INR';
+    const savedCurrency = localStorage.getItem('kleosai_currency') || 'INR';
     setGlobalCurrency(savedCurrency);
 
     const handleCurrencyUpdate = () => {
-      setGlobalCurrency(localStorage.getItem('finai_currency') || 'INR');
+      setGlobalCurrency(localStorage.getItem('kleosai_currency') || 'INR');
     };
 
     window.addEventListener('currencyChange', handleCurrencyUpdate);
@@ -89,38 +89,38 @@ export default function TransactionsPage() {
 
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-12 pb-24 min-h-screen">
-      <header className="flex items-center gap-4">
-        <div className="p-3 bg-slate-900 rounded-2xl border border-white/5 text-indigo-600">
-          <ReceiptText size={32} />
+      <header className="flex items-center gap-4 animate-fade-in">
+        <div className="p-4 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl shadow-lg shadow-emerald-500/20">
+          <ReceiptText size={32} className="text-white" />
         </div>
         <div>
-          <h1 className="text-5xl font-black tracking-tighter text-white">Transactions</h1>
-          <p className="text-slate-500 font-medium italic">
-            Ledger for Team Heisenbucks in {globalCurrency}
+          <h1 className="text-5xl font-bold tracking-tight text-slate-100">Transactions</h1>
+          <p className="text-slate-400 font-normal">
+            Ledger for <span className="text-emerald-400 font-semibold">Team Heisenbucks</span> in {globalCurrency}
           </p>
         </div>
       </header>
 
       <section>
         <div className="flex items-center gap-3 mb-6 px-4">
-          <PlusCircle className="text-indigo-500" size={20} />
-          <h2 className="text-xl font-black text-white uppercase tracking-tight">Add New Record</h2>
+          <PlusCircle className="text-emerald-400" size={20} />
+          <h2 className="text-xl font-semibold text-slate-100 tracking-tight">Add New Record</h2>
         </div>
         <TransactionForm onSubmit={addTransaction} currency={globalCurrency} />
       </section>
 
       <section>
         <div className="flex items-center gap-3 mb-6 px-4">
-          <Upload className="text-indigo-500" size={20} />
-          <h2 className="text-xl font-black text-white uppercase tracking-tight">Import from JSON</h2>
+          <Upload className="text-emerald-400" size={20} />
+          <h2 className="text-xl font-semibold text-slate-100 tracking-tight">Import from JSON</h2>
         </div>
-        <div className="glass-panel p-10 rounded-[2.5rem] border border-white/10">
+        <div className="card-modern p-10 rounded-3xl">
           <div className="space-y-4">
-            <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-700 rounded-2xl cursor-pointer hover:border-indigo-500 transition-all">
+            <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-emerald-500/20 rounded-2xl cursor-pointer hover:border-emerald-500/40 transition-all">
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                <Upload className="w-10 h-10 mb-3 text-slate-500" />
-                <p className="mb-2 text-sm text-slate-400 font-bold">
-                  <span className="font-black">Click to upload</span> or drag and drop
+                <Upload className="w-10 h-10 mb-3 text-slate-400" />
+                <p className="mb-2 text-sm text-slate-300 font-semibold">
+                  <span className="font-bold">Click to upload</span> or drag and drop
                 </p>
                 <p className="text-xs text-slate-500">JSON files only</p>
               </div>
@@ -134,7 +134,7 @@ export default function TransactionsPage() {
             </label>
             {uploadError && (
               <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
-                <p className="text-rose-500 text-sm font-bold">{uploadError}</p>
+                <p className="text-rose-500 text-sm font-semibold">{uploadError}</p>
               </div>
             )}
           </div>
@@ -143,11 +143,11 @@ export default function TransactionsPage() {
 
       <section>
         <div className="flex items-center gap-3 mb-6 px-4">
-          <div className="w-1.5 h-6 bg-indigo-500 rounded-full" />
-          <h2 className="text-xl font-black text-white uppercase tracking-tight">History</h2>
+          <div className="w-1.5 h-6 bg-emerald-500 rounded-full" />
+          <h2 className="text-xl font-semibold text-slate-100 tracking-tight">History</h2>
         </div>
         
-        <div className="glass-panel rounded-[3rem] overflow-hidden border border-white/10">
+        <div className="card-modern rounded-3xl overflow-hidden">
           {/* Use the sanitizedTransactions here */}
           <TransactionList 
             transactions={sanitizedTransactions} 

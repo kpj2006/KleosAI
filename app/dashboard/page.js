@@ -17,14 +17,14 @@ export default function DashboardPage() {
   const [globalCurrency, setGlobalCurrency] = useState('INR');
 
   useEffect(() => {
-    const session = localStorage.getItem('finai_session');
+    const session = localStorage.getItem('kleosai_session');
     if (!session) window.location.href = '/login';
     
-    const savedCurrency = localStorage.getItem('finai_currency') || 'INR';
+    const savedCurrency = localStorage.getItem('kleosai_currency') || 'INR';
     setGlobalCurrency(savedCurrency);
 
     const handleCurrencyUpdate = () => {
-      setGlobalCurrency(localStorage.getItem('finai_currency') || 'INR');
+      setGlobalCurrency(localStorage.getItem('kleosai_currency') || 'INR');
     };
 
     window.addEventListener('currencyChange', handleCurrencyUpdate);
@@ -64,22 +64,22 @@ export default function DashboardPage() {
   return (
     <div className="max-w-7xl mx-auto space-y-12 pb-24 min-h-screen px-4">
       
-      <header className="pt-6 animate-in fade-in slide-in-from-top-4 duration-700">
+      <header className="pt-6 animate-fade-in">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-slate-900 rounded-2xl border border-white/5 text-indigo-600">
-              <LayoutDashboard size={32} />
+            <div className="p-4 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl shadow-lg shadow-emerald-500/20">
+              <LayoutDashboard size={32} className="text-white" />
             </div>
             <div>
-              <h1 className="text-5xl font-black tracking-tighter text-white uppercase">Wealth Overview</h1>
-              <p className="text-slate-500 font-medium italic">
-                Strategic Ledger for <span className="text-indigo-500 font-bold">Team Heisenbucks</span> in {globalCurrency}
+              <h1 className="text-5xl font-bold tracking-tight text-slate-100">Wealth Overview</h1>
+              <p className="text-slate-400 font-normal">
+                Strategic Ledger for <span className="text-emerald-400 font-semibold">Team Heisenbucks</span> in {globalCurrency}
               </p>
             </div>
           </div>
           <button 
             onClick={() => generateInsights()} 
-            className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-2xl font-black text-xs uppercase shadow-xl hover:scale-105 active:scale-95 transition-all"
+            className="btn-primary flex items-center gap-2 rounded-xl text-sm"
           >
             <RefreshCw size={16} className={aiLoading ? "animate-spin" : ""} />
             Re-Analyze Data
@@ -104,10 +104,10 @@ export default function DashboardPage() {
       </section>
 
       {/* SMART PURCHASE VALIDATOR */}
-      <section className="glass-panel p-10 rounded-[3.5rem] border border-white/10">
+      <section className="card-modern p-10 rounded-3xl">
         <div className="flex items-center gap-3 mb-10">
-          <ShoppingCart className="text-indigo-500" size={28} />
-          <h2 className="text-2xl font-black text-white uppercase tracking-tight">Smart Purchase Validator</h2>
+          <ShoppingCart className="text-emerald-400" size={28} />
+          <h2 className="text-2xl font-semibold text-slate-100 tracking-tight">Smart Purchase Validator</h2>
         </div>
         <PurchaseAssistant 
           userFinances={userFinances} 
@@ -117,22 +117,22 @@ export default function DashboardPage() {
       </section>
 
       {/* DYNAMIC SPENDING CHART */}
-      <section className="glass-panel p-10 rounded-[3.5rem] border border-white/10">
-        <h2 className="text-2xl font-black text-white uppercase tracking-tight mb-10">Spending Patterns</h2>
+      <section className="card-modern p-10 rounded-3xl">
+        <h2 className="text-2xl font-semibold text-slate-100 tracking-tight mb-10">Spending Patterns</h2>
         <SpendingChart transactions={transactions} currency={globalCurrency} />
       </section>
 
       {/* GROWTH MENTOR SECTION */}
       <section className="space-y-8 pb-20">
-        <h2 className="text-3xl font-black text-white flex items-center gap-4">
-          <BrainCircuit className="text-indigo-500" />
+        <h2 className="text-3xl font-bold text-slate-100 flex items-center gap-4">
+          <BrainCircuit className="text-emerald-400" />
           Growth Mentor Strategy 
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {insights ? insights.map((item, index) => (
             <InsightCard key={index} index={index} insight={item} currency={globalCurrency} />
           )) : [1, 2].map((i) => (
-            <div key={i} className="h-44 glass-panel rounded-[2.5rem] animate-pulse bg-slate-100/10" />
+            <div key={i} className="h-44 card-modern rounded-2xl animate-pulse" />
           ))}
         </div>
       </section>

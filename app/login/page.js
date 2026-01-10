@@ -39,9 +39,9 @@ export default function LoginPage() {
       const token = await user.getIdToken();
 
       // SESSION PERSISTENCE
-      localStorage.setItem('finai_session', token);
-      localStorage.setItem('finai_user_email', user.email);
-      localStorage.setItem('finai_user_uid', user.uid);
+      localStorage.setItem('kleosai_session', token);
+      localStorage.setItem('kleosai_user_email', user.email);
+      localStorage.setItem('kleosai_user_uid', user.uid);
       
       // Redirect to dashboard on success
       window.location.href = '/dashboard';
@@ -89,9 +89,9 @@ export default function LoginPage() {
       const token = await user.getIdToken();
       
       // SESSION PERSISTENCE
-      localStorage.setItem('finai_session', token);
-      localStorage.setItem('finai_user_email', user.email);
-      localStorage.setItem('finai_user_uid', user.uid);
+      localStorage.setItem('kleosai_session', token);
+      localStorage.setItem('kleosai_user_email', user.email);
+      localStorage.setItem('kleosai_user_uid', user.uid);
       
       // Redirect to dashboard on success
       window.location.href = '/dashboard';
@@ -116,9 +116,9 @@ export default function LoginPage() {
       const token = await user.getIdToken();
       
       // SESSION PERSISTENCE
-      localStorage.setItem('finai_session', token);
-      localStorage.setItem('finai_user_email', user.email);
-      localStorage.setItem('finai_user_uid', user.uid);
+      localStorage.setItem('kleosai_session', token);
+      localStorage.setItem('kleosai_user_email', user.email);
+      localStorage.setItem('kleosai_user_uid', user.uid);
       
       // Redirect to dashboard on success
       window.location.href = '/dashboard';
@@ -131,24 +131,24 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden bg-transparent transition-colors duration-700">
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-[120px] animate-pulse delay-700" />
+    <div className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden bg-transparent transition-colors duration-300">
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-emerald-500/10 dark:bg-emerald-500/15 rounded-full blur-[120px] animate-pulse-glow" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-teal-500/10 dark:bg-teal-500/15 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: '1s' }} />
 
-      <div className="w-full max-w-lg relative animate-in fade-in zoom-in-95 duration-700">
+      <div className="w-full max-w-lg relative animate-fade-in z-10">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-black uppercase tracking-widest mb-6">
-            <Sparkles size={14} /> FinAI Security
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wide mb-6">
+            <Sparkles size={14} /> KleosAI Security
           </div>
-          <h1 className="text-5xl font-black tracking-tighter text-slate-900 dark:text-white mb-2">
+          <h1 className="text-5xl font-bold tracking-tight text-slate-100 mb-2">
             Welcome Back
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 font-medium">
+          <p className="text-slate-400 font-normal">
             Enter your credentials to access your financial dashboard.
           </p>
         </div>
 
-        <div className="glass-panel p-8 md:p-12 rounded-[3.5rem] border border-white/60 dark:border-slate-800/50">
+        <div className="card-modern p-8 md:p-12 rounded-3xl">
           
           {error && (
             <div className="mb-6 p-4 bg-rose-500/10 border border-rose-500/20 text-rose-500 rounded-2xl flex items-center gap-3 text-sm font-bold animate-in fade-in slide-in-from-top-2">
@@ -158,40 +158,40 @@ export default function LoginPage() {
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 ml-4">
+              <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">
                 Email Address
               </label>
               <div className="relative group">
-                <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-400 transition-colors" size={20} />
                 <input 
                   type="email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="admin@heisenbucks.com"
-                  className="w-full pl-14 pr-6 py-5 bg-slate-100/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="input-modern pl-12"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <div className="flex justify-between items-center px-4">
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
+              <div className="flex justify-between items-center px-1">
+                <label className="text-xs font-semibold uppercase tracking-wide text-slate-400">
                   Password
                 </label>
-                <Link href="#" className="text-[10px] font-black uppercase tracking-widest text-indigo-500 hover:text-indigo-600">
+                <Link href="#" className="text-xs font-semibold uppercase tracking-wide text-emerald-400 hover:text-emerald-300">
                   Forgot?
                 </Link>
               </div>
               <div className="relative group">
-                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-400 transition-colors" size={20} />
                 <input 
                   type="password" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="••••••••"
-                  className="w-full pl-14 pr-6 py-5 bg-slate-100/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="input-modern pl-12"
                 />
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function LoginPage() {
             <button 
               type="submit"
               disabled={isLoading}
-              className="w-full py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:shadow-2xl active:scale-95 transition-all disabled:opacity-50 group"
+              className="btn-primary w-full py-4 rounded-xl text-lg flex items-center justify-center gap-3 disabled:opacity-50 group"
             >
               {isLoading ? "Authenticating..." : "Sign In"}
               {!isLoading && <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />}
@@ -208,9 +208,9 @@ export default function LoginPage() {
 
           <div className="relative my-10 text-center">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200 dark:border-slate-800"></div>
+              <div className="w-full border-t border-slate-700/50"></div>
             </div>
-            <span className="relative px-4 bg-white dark:bg-[#020617] text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600">
+            <span className="relative px-4 bg-slate-900/60 text-xs font-semibold uppercase tracking-wide text-slate-400">
               Or continue with
             </span>
           </div>
@@ -220,7 +220,7 @@ export default function LoginPage() {
               type="button"
               onClick={handleGoogleSignIn}
               disabled={isLoading}
-              className="flex items-center justify-center gap-3 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all disabled:opacity-50"
+              className="btn-secondary flex items-center justify-center gap-3 py-4 rounded-xl disabled:opacity-50"
             >
               <Chrome size={18} /> Google
             </button>
@@ -228,18 +228,18 @@ export default function LoginPage() {
               type="button"
               onClick={handleGithubSignIn}
               disabled={isLoading}
-              className="flex items-center justify-center gap-3 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all disabled:opacity-50"
+              className="btn-secondary flex items-center justify-center gap-3 py-4 rounded-xl disabled:opacity-50"
             >
               <Github size={18} /> GitHub
             </button>
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm font-medium text-slate-500">
+        <p className="mt-8 text-center text-sm font-normal text-slate-400">
           Don't have an account? 
           <Link 
             href="/register" 
-            className="ml-2 font-black text-indigo-500 hover:text-indigo-600 uppercase tracking-tight"
+            className="ml-2 font-semibold text-emerald-400 hover:text-emerald-300 uppercase tracking-tight"
           >
             Create Free Account
           </Link>
