@@ -15,22 +15,50 @@ module.exports = {
 
   theme: {
     extend: {
-      // 3. Optional: Add custom animations for your glassmorphism effects
+      // Modern animations for premium UI
       keyframes: {
         shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(100%)' },
+        },
+        'pulse-glow': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.6' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
       animation: {
-        shimmer: 'shimmer 2s infinite',
+        shimmer: 'shimmer 2s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+        float: 'float 3s ease-in-out infinite',
+        'fade-in': 'fade-in 0.5s ease-out',
       },
-      // You can also define custom colors for Team Heisenbucks here
+      // Modern green/teal color palette for Team Heisenbucks
       colors: {
         brand: {
-          light: '#6366f1', // Indigo 500
-          dark: '#4f46e5',  // Indigo 600
-        }
-      }
+          emerald: {
+            light: '#10b981', // Emerald 500
+            DEFAULT: '#059669', // Emerald 600
+            dark: '#047857',  // Emerald 700
+          },
+          teal: {
+            light: '#14b8a6', // Teal 500
+            DEFAULT: '#0d9488', // Teal 600
+            dark: '#0f766e',  // Teal 700
+          },
+        },
+      },
+      boxShadow: {
+        'glow-emerald': '0 0 20px rgba(16, 185, 129, 0.4), 0 0 40px rgba(16, 185, 129, 0.2)',
+        'glow-teal': '0 0 20px rgba(20, 184, 166, 0.4), 0 0 40px rgba(20, 184, 166, 0.2)',
+      },
     },
   },
   plugins: [],
