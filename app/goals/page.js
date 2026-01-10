@@ -58,7 +58,7 @@ export default function GoalsPage() {
               Financial Goals
             </h1>
             <p className="text-slate-400 font-normal">
-              Strategy for <span className="text-emerald-400 font-semibold">Team Heisenbucks</span> in {globalCurrency}
+              Strategy for <span className="text-emerald-400 font-semibold">Team Schrödinger Devs</span> in {globalCurrency}
             </p>
           </div>
         </div>
