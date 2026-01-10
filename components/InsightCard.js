@@ -22,7 +22,7 @@ export default function InsightCard({ insight, index }) {
         </div>
         <div className="space-y-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-emerald-400">
-            {insight?.category || "Strategy"}
+            {insight?.category || "Recommendation"}
           </p>
           <p className="text-sm font-normal text-slate-300 leading-relaxed">
             {insight?.text || "Analyzing financial patterns..."}

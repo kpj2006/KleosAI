@@ -41,7 +41,7 @@ export default function TransactionForm({ onSubmit, currency = 'INR' }) {
         {/* Merchant Input */}
         <div className="space-y-3">
           <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">
-            Merchant / Detail
+            Transaction Source
           </label>
           <input
             type="text"
@@ -117,7 +117,7 @@ export default function TransactionForm({ onSubmit, currency = 'INR' }) {
         className="btn-primary w-full py-5 rounded-xl flex items-center justify-center gap-3"
       >
         <PlusCircle size={22} />
-        <span className="uppercase tracking-wide text-sm">Add {type}</span>
+        <span className="uppercase tracking-wide text-sm">Log {type}</span>
       </button>
     </form>
   );

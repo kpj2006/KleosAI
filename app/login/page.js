@@ -138,13 +138,13 @@ export default function LoginPage() {
       <div className="w-full max-w-lg relative animate-fade-in z-10">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wide mb-6">
-            <Sparkles size={14} /> KleosAI Security
+            <Sparkles size={14} /> Secure Access
           </div>
           <h1 className="text-5xl font-bold tracking-tight text-slate-100 mb-2">
-            Welcome Back
+            Access Your Account
           </h1>
           <p className="text-slate-400 font-normal">
-            Enter your credentials to access your financial dashboard.
+            Sign in to view your financial dashboard.
           </p>
         </div>
 
@@ -236,12 +236,12 @@ export default function LoginPage() {
         </div>
 
         <p className="mt-8 text-center text-sm font-normal text-slate-400">
-          Don't have an account? 
+          No account yet?
           <Link 
             href="/register" 
             className="ml-2 font-semibold text-emerald-400 hover:text-emerald-300 uppercase tracking-tight"
           >
-            Create Free Account
+            Create Account
           </Link>
         </p>
       </div>

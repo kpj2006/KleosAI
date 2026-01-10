@@ -21,14 +21,14 @@ export default function GoalProgress({ goal, onDelete, currency = 'INR' }) {
       <div className="flex justify-between items-start">
         <div className="flex gap-4">
           {/* Icon Container with modern styling */}
-          <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400">
-            <Target size={24} /> 
+          <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/30 text-emerald-400">
+            <Target size={25} /> 
           </div>
           <div>
             <h3 className="text-2xl font-bold text-slate-100 capitalize">{name}</h3>
             {/* FIX: Standardized dynamic target display */}
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">
-              Target: {formatGlobal(target, currency)}
+              Required: {formatGlobal(target, currency)}
             </p>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function GoalProgress({ goal, onDelete, currency = 'INR' }) {
 
       <div className="flex justify-between items-end">
         <div className="space-y-1">
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Total Saved</p>
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Current Progress</p>
           {/* FIX: Dynamic conversion for current savings */}
           <p className="text-2xl font-bold text-slate-100 tabular-nums">
             {formatGlobal(saved, currency)}
@@ -64,14 +64,14 @@ export default function GoalProgress({ goal, onDelete, currency = 'INR' }) {
         
         {percentage >= 100 ? (
           <div className="flex items-center gap-2 text-emerald-400 font-bold uppercase text-xs tracking-tight animate-pulse">
-            <Trophy size={14} /> Goal Achieved!
+            <Trophy size={14} /> Target Reached
           </div>
         ) : (
           <div className="text-right">
             <p className="text-xs font-semibold text-slate-400">
               <Sparkles size={12} className="inline mr-1 text-emerald-400" />
               {/* FIX: Accurate "more to go" display in selected currency */}
-              {formatGlobal(remaining, currency)} more to go!
+              {formatGlobal(remaining, currency)} remaining
             </p>
           </div>
         )}

@@ -71,9 +71,9 @@ export default function DashboardPage() {
               <LayoutDashboard size={32} className="text-white" />
             </div>
             <div>
-              <h1 className="text-5xl font-bold tracking-tight text-slate-100">Wealth Overview</h1>
+              <h1 className="text-5xl font-bold tracking-tight text-slate-100">Your Financial Pulse</h1>
               <p className="text-slate-400 font-normal">
-                Strategic Ledger for <span className="text-emerald-400 font-semibold">Team Schrödinger Devs</span> in {globalCurrency}
+                Real-time position for <span className="text-emerald-400 font-semibold">Team Schrödinger Devs</span> in {globalCurrency}
               </p>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function DashboardPage() {
 
       {/* DYNAMIC SPENDING CHART */}
       <section className="card-modern p-10 rounded-3xl">
-        <h2 className="text-2xl font-semibold text-slate-100 tracking-tight mb-10">Spending Patterns</h2>
+        <h2 className="text-2xl font-semibold text-slate-100 tracking-tight mb-10">Expense Flow Analysis</h2>
         <SpendingChart transactions={transactions} currency={globalCurrency} />
       </section>
 
@@ -126,7 +126,7 @@ export default function DashboardPage() {
       <section className="space-y-8 pb-20">
         <h2 className="text-3xl font-bold text-slate-100 flex items-center gap-4">
           <BrainCircuit className="text-emerald-400" />
-          Growth Mentor Strategy 
+          Strategic Recommendations
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {insights ? insights.map((item, index) => (
