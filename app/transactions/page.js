@@ -103,7 +103,7 @@ export default function TransactionsPage() {
         <div>
           <h1 className="text-5xl font-bold tracking-tight text-slate-100">Transactions</h1>
           <p className="text-slate-400 font-normal">
-            Ledger for <span className="text-emerald-400 font-semibold">Team Heisenbucks</span> in {globalCurrency}
+            Complete record for <span className="text-emerald-400 font-semibold">Team Schrödinger Devs</span> in {globalCurrency}
           </p>
         </div>
       </header>
@@ -111,7 +111,7 @@ export default function TransactionsPage() {
       <section>
         <div className="flex items-center gap-3 mb-6 px-4">
           <PlusCircle className="text-emerald-400" size={20} />
-          <h2 className="text-xl font-semibold text-slate-100 tracking-tight">Add New Record</h2>
+          <h2 className="text-xl font-semibold text-slate-100 tracking-tight">Log New Entry</h2>
         </div>
         <TransactionForm onSubmit={addTransaction} currency={globalCurrency} />
       </section>
@@ -151,7 +151,7 @@ export default function TransactionsPage() {
       <section>
         <div className="flex items-center gap-3 mb-6 px-4">
           <div className="w-1.5 h-6 bg-emerald-500 rounded-full" />
-          <h2 className="text-xl font-semibold text-slate-100 tracking-tight">History</h2>
+          <h2 className="text-xl font-semibold text-slate-100 tracking-tight">Complete Record</h2>
         </div>
         
         <div className="card-modern rounded-3xl overflow-hidden">

@@ -23,7 +23,7 @@ export default function AvailableMoneyCard({ balance, income, expenses, currency
       <div className="card-modern p-8 rounded-2xl">
         <div className="flex items-center gap-3 mb-4 text-emerald-400">
           <TrendingUp size={18} />
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Monthly Income</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Monthly Inflow</p>
         </div>
         <h3 className="text-4xl font-bold tracking-tight text-slate-100">
           {formatGlobal(income, currency)}

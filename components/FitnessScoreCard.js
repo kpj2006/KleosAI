@@ -63,7 +63,7 @@ export default function FitnessScoreCard({
             {/* Safety Buffer Display */}
             <div className="p-6 bg-slate-800/50 rounded-2xl border border-teal-500/10 group hover:border-teal-500/30 transition-all">
               <div className="flex justify-between items-center mb-1">
-                <p className="text-xs font-semibold uppercase text-slate-400">Safety Buffer</p>
+                <p className="text-xs font-semibold uppercase text-slate-400">Reserve Fund</p>
                 <ShieldCheck size={14} className="text-teal-400" />
               </div>
               <p className="text-3xl font-bold text-slate-100">{formatGlobal(safetyBuffer, currency)}</p>
@@ -76,6 +76,7 @@ export default function FitnessScoreCard({
             <div>
               <p className="text-xs font-semibold text-emerald-400 uppercase">Monthly Surplus</p>
               <p className="text-slate-100 font-bold">{formatGlobal(monthlySurplus, currency)}</p>
+              <p className="text-xs text-slate-500 mt-1">Available flexibility this month.</p>
             </div>
           </div>
         </div>
