@@ -40,51 +40,51 @@ export default function PurchaseAssistant({ userFinances, productDatabase, globa
   };
 
   return (
-    <div className="glass-panel p-10 rounded-[3.5rem] border border-white/10 space-y-8">
+    <div className="space-y-8">
       {/* Navigation Tabs */}
-      <div className="flex gap-2 p-1.5 bg-slate-900/50 rounded-2xl border border-white/5 w-fit">
-        <button onClick={() => setViewMode('input')} className={`flex items-center gap-2 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${viewMode === 'input' ? 'bg-indigo-600 text-white' : 'text-slate-400'}`}>
+      <div className="flex gap-2 p-1.5 bg-slate-800/50 rounded-xl border border-emerald-500/10 w-fit">
+        <button onClick={() => setViewMode('input')} className={`flex items-center gap-2 px-6 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all ${viewMode === 'input' ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/20' : 'text-slate-400'}`}>
           <PlusCircle size={14} /> Add Product
         </button>
-        <button onClick={() => result && setViewMode('result')} disabled={!result} className={`flex items-center gap-2 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${!result ? 'opacity-30' : ''} ${viewMode === 'result' ? 'bg-indigo-600 text-white' : 'text-slate-400'}`}>
+        <button onClick={() => result && setViewMode('result')} disabled={!result} className={`flex items-center gap-2 px-6 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all ${!result ? 'opacity-30' : ''} ${viewMode === 'result' ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/20' : 'text-slate-400'}`}>
           <Layout size={14} /> Analysis
         </button>
       </div>
 
       {viewMode === 'input' ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in slide-in-from-left-4">
-          <input type="text" placeholder="Product Name" className="bg-slate-900/50 p-4 rounded-2xl text-white outline-none border border-white/5 font-bold" onChange={(e) => setTarget({...target, name: e.target.value})} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+          <input type="text" placeholder="Product Name" className="input-modern" onChange={(e) => setTarget({...target, name: e.target.value})} />
           
-          <select className="bg-slate-900/50 p-4 rounded-2xl text-white outline-none border border-white/5 font-bold cursor-pointer" onChange={(e) => setTarget({...target, category: e.target.value})}>
+          <select className="input-modern cursor-pointer" onChange={(e) => setTarget({...target, category: e.target.value})}>
             <option value="smartphone">Smartphone</option>
             <option value="real-estate">Real Estate</option>
             <option value="automobile">Automobile</option>
           </select>
 
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-indigo-500 font-bold">{CURRENCIES[selectedCurrency]?.symbol || '$'}</span>
-            <input type="number" placeholder="Price" className="w-full bg-slate-900/50 p-4 pl-10 rounded-2xl text-white border border-white/5 font-bold outline-none" onChange={(e) => setTarget({...target, price: e.target.value})} />
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-400 font-semibold">{CURRENCIES[selectedCurrency]?.symbol || '$'}</span>
+            <input type="number" placeholder="Price" className="input-modern pl-10" onChange={(e) => setTarget({...target, price: e.target.value})} />
           </div>
 
-          <div className="flex items-center gap-2 px-4 py-2 bg-slate-900/50 rounded-2xl border border-white/5">
-            <Globe size={14} className="text-indigo-500" />
-            <select value={selectedCurrency} onChange={(e) => setSelectedCurrency(e.target.value)} className="bg-transparent text-[10px] font-black uppercase text-white outline-none cursor-pointer">
+          <div className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 rounded-xl border border-emerald-500/10">
+            <Globe size={14} className="text-emerald-400" />
+            <select value={selectedCurrency} onChange={(e) => setSelectedCurrency(e.target.value)} className="bg-transparent text-xs font-semibold text-slate-300 outline-none cursor-pointer">
               {Object.keys(CURRENCIES).map(code => (
                 <option key={code} value={code} className="bg-slate-900">{code}</option>
               ))}
             </select>
           </div>
           
-          <button onClick={handleRunAnalysis} className="col-span-full py-5 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest shadow-xl shadow-indigo-500/20 active:scale-95 transition-all">Run Strategy Analysis</button>
+          <button onClick={handleRunAnalysis} className="btn-primary col-span-full py-5 rounded-xl uppercase tracking-wide">Run Strategy Analysis</button>
         </div>
       ) : (
         /* ANALYSIS VIEW */
-        <div className="space-y-8 animate-in zoom-in-95">
-          <div className={`p-8 rounded-[2.5rem] flex items-center gap-6 border ${result.status === 'SAFE TO BUY' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500' : 'bg-rose-500/10 border-rose-500/20 text-rose-500'}`}>
+        <div className="space-y-8 animate-fade-in">
+          <div className={`p-8 rounded-2xl flex items-center gap-6 border ${result.status === 'SAFE TO BUY' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-rose-500/10 border-rose-500/20 text-rose-400'}`}>
             {result.status === 'SAFE TO BUY' ? <ShieldCheck size={40} /> : <XCircle size={40} />}
             <div>
-              <h4 className="text-3xl font-black uppercase tracking-tighter">{result.status}</h4>
-              <p className="text-sm font-medium opacity-80 italic">Analysis complete for {target.name}</p>
+              <h4 className="text-3xl font-bold uppercase tracking-tight">{result.status}</h4>
+              <p className="text-sm font-normal opacity-80">Analysis complete for {target.name}</p>
             </div>
           </div>
 
@@ -100,21 +100,21 @@ export default function PurchaseAssistant({ userFinances, productDatabase, globa
               const normalizedSavings = savingsINR / dashboardRate;
 
               return (
-                <div key={alt.name} className="p-6 bg-white/5 border border-white/5 rounded-3xl flex justify-between items-center group hover:border-indigo-500/50 transition-all">
+                <div key={alt.name} className="p-6 bg-slate-800/30 border border-emerald-500/10 rounded-2xl flex justify-between items-center group hover:border-emerald-500/30 transition-all">
                   <div>
-                    <p className="text-white font-black">{alt.name}</p>
+                    <p className="text-slate-100 font-semibold">{alt.name}</p>
                     {/* Render converted price instead of raw small numbers */}
-                    <p className="text-[10px] text-slate-500 font-black tracking-widest uppercase">
+                    <p className="text-xs text-slate-400 font-semibold tracking-wide uppercase">
                       {formatGlobal(convertedAltPrice, globalCurrency)}
                     </p>
                   </div>
                   {/* Normalized savings value matching dashboard currency */}
-                  <p className="text-emerald-500 font-black text-xs">Save {formatGlobal(normalizedSavings, globalCurrency)}</p>
+                  <p className="text-emerald-400 font-semibold text-xs">Save {formatGlobal(normalizedSavings, globalCurrency)}</p>
                 </div>
               );
             })}
           </div>
-          <button onClick={() => setViewMode('input')} className="flex items-center gap-2 text-indigo-500 font-black text-[10px] uppercase tracking-widest hover:underline transition-all"><RefreshCw size={12} /> Analyze New Purchase</button>
+          <button onClick={() => setViewMode('input')} className="flex items-center gap-2 text-emerald-400 font-semibold text-xs uppercase tracking-wide hover:underline transition-all"><RefreshCw size={12} /> Analyze New Purchase</button>
         </div>
       )}
     </div>

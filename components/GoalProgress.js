@@ -20,24 +20,24 @@ export default function GoalProgress({ goal, onDelete, currency = 'INR' }) {
     <div className="space-y-6">
       <div className="flex justify-between items-start">
         <div className="flex gap-4">
-          {/* Icon Container with mesh-friendly transparency */}
-          <div className="p-3 bg-white/10 rounded-2xl border border-white/10 text-indigo-400">
+          {/* Icon Container with modern styling */}
+          <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400">
             <Target size={24} /> 
           </div>
           <div>
-            <h3 className="text-2xl font-black text-white capitalize">{name}</h3>
+            <h3 className="text-2xl font-bold text-slate-100 capitalize">{name}</h3>
             {/* FIX: Standardized dynamic target display */}
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">
               Target: {formatGlobal(target, currency)}
             </p>
           </div>
         </div>
         
         <div className="flex items-center gap-4">
-          <span className="text-4xl font-black text-indigo-400 tabular-nums">{percentage}%</span>
+          <span className="text-4xl font-bold text-emerald-400 tabular-nums">{percentage}%</span>
           <button 
             onClick={onDelete}
-            className="p-2 text-slate-500 hover:text-rose-500 transition-colors"
+            className="p-2 text-slate-400 hover:text-rose-400 transition-colors"
             title="Remove Target"
           >
             <Trash2 size={20} />
@@ -45,31 +45,31 @@ export default function GoalProgress({ goal, onDelete, currency = 'INR' }) {
         </div>
       </div>
 
-      {/* NEON PROGRESS BAR: Reflects live transaction data */}
-      <div className="h-4 bg-slate-900/50 rounded-full overflow-hidden border border-white/5">
+      {/* MODERN PROGRESS BAR */}
+      <div className="h-4 bg-slate-800/50 rounded-full overflow-hidden border border-emerald-500/10">
         <div 
-          className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-[0_0_15px_rgba(99,102,241,0.5)] transition-all duration-1000"
+          className="h-full bg-gradient-to-r from-emerald-500 to-teal-600 shadow-glow-emerald transition-all duration-1000"
           style={{ width: `${percentage}%` }}
         />
       </div>
 
       <div className="flex justify-between items-end">
         <div className="space-y-1">
-          <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Saved</p>
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Total Saved</p>
           {/* FIX: Dynamic conversion for current savings */}
-          <p className="text-2xl font-black text-white tabular-nums">
+          <p className="text-2xl font-bold text-slate-100 tabular-nums">
             {formatGlobal(saved, currency)}
           </p>
         </div>
         
         {percentage >= 100 ? (
-          <div className="flex items-center gap-2 text-emerald-400 font-black uppercase text-[10px] tracking-tighter animate-bounce">
+          <div className="flex items-center gap-2 text-emerald-400 font-bold uppercase text-xs tracking-tight animate-pulse">
             <Trophy size={14} /> Goal Achieved!
           </div>
         ) : (
           <div className="text-right">
-            <p className="text-xs font-bold text-slate-500 italic">
-              <Sparkles size={12} className="inline mr-1 text-indigo-400" />
+            <p className="text-xs font-semibold text-slate-400">
+              <Sparkles size={12} className="inline mr-1 text-emerald-400" />
               {/* FIX: Accurate "more to go" display in selected currency */}
               {formatGlobal(remaining, currency)} more to go!
             </p>

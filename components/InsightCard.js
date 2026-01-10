@@ -12,19 +12,19 @@ export default function InsightCard({ insight, index }) {
 
   return (
     <div 
-      className="glass-panel p-6 rounded-[2rem] border border-white/5 hover:border-indigo-500/30 transition-all duration-500 group"
+      className="card-modern p-6 rounded-2xl hover:border-emerald-500/20 transition-all duration-300 group"
       style={{ animationDelay: `${index * 150}ms` }}
     >
       <div className="flex items-start gap-4">
-        <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover:scale-110 transition-transform">
+        <div className="w-12 h-12 rounded-xl bg-slate-800/50 border border-emerald-500/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-emerald-500/30 transition-all">
           {/* Use optional chaining here as well */}
           {getIcon(insight?.category)}
         </div>
         <div className="space-y-2">
-          <p className="text-[10px] font-black uppercase tracking-widest text-indigo-400">
+          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-400">
             {insight?.category || "Strategy"}
           </p>
-          <p className="text-sm font-medium text-slate-300 leading-relaxed">
+          <p className="text-sm font-normal text-slate-300 leading-relaxed">
             {insight?.text || "Analyzing financial patterns..."}
           </p>
         </div>

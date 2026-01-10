@@ -69,17 +69,17 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 relative bg-transparent transition-colors duration-700">
-      <div className="w-full max-w-lg relative animate-in fade-in zoom-in-95 duration-700">
+    <div className="min-h-screen flex items-center justify-center px-6 relative bg-transparent transition-colors duration-300">
+      <div className="w-full max-w-lg relative animate-fade-in">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-black uppercase tracking-widest mb-6">
-            <Sparkles size={14} /> Join FinAI
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wide mb-6">
+            <Sparkles size={14} /> Join KleosAI
           </div>
-          <h1 className="text-5xl font-black tracking-tighter text-slate-900 dark:text-white mb-2">Create Account</h1>
-          <p className="text-slate-500 dark:text-slate-400 font-medium">Start your journey with Team Heisenbucks.</p>
+          <h1 className="text-5xl font-bold tracking-tight text-slate-100 mb-2">Create Account</h1>
+          <p className="text-slate-400 font-normal">Start your journey with Team Heisenbucks.</p>
         </div>
 
-        <div className="glass-panel p-8 md:p-12 rounded-[3.5rem] border border-white/60 dark:border-slate-800/50">
+        <div className="card-modern p-8 md:p-12 rounded-3xl">
           {error && (
             <div className="mb-6 p-4 bg-rose-500/10 border border-rose-500/20 text-rose-500 rounded-2xl flex items-center gap-3 text-sm font-bold">
               <AlertCircle size={18} /> {error}
@@ -88,60 +88,60 @@ export default function RegisterPage() {
 
           <form onSubmit={handleRegister} className="space-y-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 ml-4">Full Name</label>
+              <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">Full Name</label>
               <div className="relative group">
-                <User className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-400 transition-colors" size={20} />
                 <input 
                   type="text" 
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   required 
                   placeholder="Walter White"
-                  className="w-full pl-14 pr-6 py-5 bg-slate-100/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="input-modern pl-12"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 ml-4">Email Address</label>
+              <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">Email Address</label>
               <div className="relative group">
-                <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-400 transition-colors" size={20} />
                 <input 
                   type="email" 
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   required 
                   placeholder="admin@heisenbucks.com"
-                  className="w-full pl-14 pr-6 py-5 bg-slate-100/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="input-modern pl-12"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 ml-4">Password</label>
+              <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">Password</label>
               <div className="relative group">
-                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-400 transition-colors" size={20} />
                 <input 
                   type="password" 
                   value={formData.password}
                   onChange={(e) => setFormData({...formData, password: e.target.value})}
                   required 
                   placeholder="••••••••"
-                  className="w-full pl-14 pr-6 py-5 bg-slate-100/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="input-modern pl-12"
                 />
               </div>
             </div>
 
-            <button type="submit" disabled={isLoading} className="w-full py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:shadow-2xl active:scale-95 transition-all disabled:opacity-50">
+            <button type="submit" disabled={isLoading} className="btn-primary w-full py-4 rounded-xl text-lg flex items-center justify-center gap-3 disabled:opacity-50">
               {isLoading ? "Creating Account..." : "Sign Up"}
               {!isLoading && <ArrowRight size={20} />}
             </button>
           </form>
         </div>
 
-        <p className="mt-8 text-center text-sm font-medium text-slate-500">
+        <p className="mt-8 text-center text-sm font-normal text-slate-400">
           Already have an account? 
-          <Link href="/login" className="ml-2 font-black text-indigo-500 hover:text-indigo-600 uppercase tracking-tight">
+          <Link href="/login" className="ml-2 font-semibold text-emerald-400 hover:text-emerald-300 uppercase tracking-tight">
             Sign In
           </Link>
         </p>

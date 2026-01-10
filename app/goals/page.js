@@ -22,12 +22,12 @@ export default function GoalsPage() {
     }
 
     // Initial sync from localStorage
-    const savedCurrency = localStorage.getItem('finai_currency') || 'INR';
+    const savedCurrency = localStorage.getItem('kleosai_currency') || 'INR';
     setGlobalCurrency(savedCurrency);
 
     // Event listener for real-time currency toggles from the Navbar
     const handleCurrencyUpdate = () => {
-      const updatedCurrency = localStorage.getItem('finai_currency') || 'INR';
+      const updatedCurrency = localStorage.getItem('kleosai_currency') || 'INR';
       setGlobalCurrency(updatedCurrency);
     };
 
@@ -45,29 +45,29 @@ export default function GoalsPage() {
     <div className="max-w-5xl mx-auto p-6 space-y-12 pb-24 transition-all duration-700 bg-transparent min-h-screen">
       
       {/* 1. ADAPTIVE HEADER */}
-      <header className="px-2 animate-in fade-in slide-in-from-top-4 duration-700">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-4">
+      <header className="px-2 animate-fade-in">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wide mb-4">
           <Sparkles size={12} /> Ambition Tracking
         </div>
         <div className="flex items-center gap-4">
-          <div className="p-3 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 text-indigo-600">
-            <Target size={32} />
+          <div className="p-4 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl shadow-lg shadow-emerald-500/20">
+            <Target size={32} className="text-white" />
           </div>
           <div>
-            <h1 className="text-5xl font-black tracking-tighter text-slate-900 dark:text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-slate-100">
               Financial Goals
             </h1>
-            <p className="text-slate-500 dark:text-slate-400 font-medium italic">
-              Strategy for <span className="text-indigo-500 font-bold">Team Heisenbucks</span> in {globalCurrency}
+            <p className="text-slate-400 font-normal">
+              Strategy for <span className="text-emerald-400 font-semibold">Team Heisenbucks</span> in {globalCurrency}
             </p>
           </div>
         </div>
       </header>
 
       {/* 2. GOAL CREATION FORM */}
-      <section className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <div className="glass-panel p-10 rounded-[3rem] border border-white/10">
-          <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight mb-8 uppercase">
+      <section className="animate-fade-in">
+        <div className="card-modern p-10 rounded-3xl">
+          <h2 className="text-2xl font-semibold text-slate-100 tracking-tight mb-8">
             Create New Goal
           </h2>
           {/* Passing currency to the form to show the correct input symbol */}
@@ -76,10 +76,10 @@ export default function GoalsPage() {
       </section>
 
       {/* 3. ADAPTIVE TARGET LIST */}
-      <section className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <section className="space-y-8 animate-fade-in">
         <div className="flex items-center gap-3 px-4">
-          <div className="w-1.5 h-6 bg-indigo-500 rounded-full" />
-          <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+          <div className="w-1.5 h-6 bg-emerald-500 rounded-full" />
+          <h2 className="text-xl font-semibold text-slate-100 uppercase tracking-tight">
             Active Targets
           </h2>
         </div>

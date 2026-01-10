@@ -35,18 +35,18 @@ export default function TransactionForm({ onSubmit, currency = 'INR' }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="glass-panel p-10 rounded-[2.5rem] space-y-8 transition-all border border-white/10">
+    <form onSubmit={handleSubmit} className="card-modern p-10 rounded-3xl space-y-8 transition-all">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         {/* Merchant Input */}
         <div className="space-y-3">
-          <label className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-300 ml-1">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">
             Merchant / Detail
           </label>
           <input
             type="text"
             placeholder="e.g., Apple Store"
-            className="w-full px-6 py-4 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 outline-none text-slate-900 dark:text-white font-bold transition-all"
+            className="input-modern"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -54,14 +54,14 @@ export default function TransactionForm({ onSubmit, currency = 'INR' }) {
 
         {/* Amount Input */}
         <div className="space-y-3">
-          <label className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-300 ml-1">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">
             {/* FIX: Dynamic Currency Symbol in Label */}
             Amount ({CURRENCIES[currency]?.symbol || '₹'})
           </label>
           <input
             type="number"
             placeholder="0.00"
-            className="w-full px-6 py-4 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 outline-none text-slate-900 dark:text-white font-black text-2xl transition-all"
+            className="input-modern text-2xl font-bold"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
@@ -69,15 +69,15 @@ export default function TransactionForm({ onSubmit, currency = 'INR' }) {
 
         {/* Type Toggle */}
         <div className="space-y-3">
-          <label className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-300 ml-1">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">
             Type
           </label>
-          <div className="flex p-1.5 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div className="flex p-1.5 bg-slate-800/50 rounded-xl border border-slate-700/50">
             <button
               type="button"
               onClick={() => setType('expense')}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-black transition-all ${
-                type === 'expense' ? 'bg-white dark:bg-slate-700 text-rose-600 dark:text-rose-400 shadow-sm' : 'text-slate-500'
+              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg text-xs font-semibold transition-all ${
+                type === 'expense' ? 'bg-slate-700/50 text-rose-400 shadow-sm' : 'text-slate-400'
               }`}
             >
               <ArrowDownRight size={14} /> EXPENSE
@@ -85,8 +85,8 @@ export default function TransactionForm({ onSubmit, currency = 'INR' }) {
             <button
               type="button"
               onClick={() => setType('income')}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-black transition-all ${
-                type === 'income' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm' : 'text-slate-500'
+              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg text-xs font-semibold transition-all ${
+                type === 'income' ? 'bg-slate-700/50 text-emerald-400 shadow-sm' : 'text-slate-400'
               }`}
             >
               <ArrowUpRight size={14} /> INCOME
@@ -96,11 +96,11 @@ export default function TransactionForm({ onSubmit, currency = 'INR' }) {
 
         {/* Category Dropdown */}
         <div className="space-y-3">
-          <label className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-300 ml-1">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">
             Category
           </label>
           <select 
-            className="w-full px-6 py-4 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl outline-none text-slate-900 dark:text-white font-bold transition-all focus:ring-4 focus:ring-indigo-500/10"
+            className="input-modern font-semibold"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
@@ -114,10 +114,10 @@ export default function TransactionForm({ onSubmit, currency = 'INR' }) {
 
       <button
         type="submit"
-        className="w-full bg-slate-900 dark:bg-indigo-600 text-white font-black py-5 rounded-[1.5rem] shadow-xl hover:shadow-indigo-500/20 transition-all flex items-center justify-center gap-3 active:scale-[0.98]"
+        className="btn-primary w-full py-5 rounded-xl flex items-center justify-center gap-3"
       >
         <PlusCircle size={22} />
-        <span className="uppercase tracking-widest text-sm">Add {type}</span>
+        <span className="uppercase tracking-wide text-sm">Add {type}</span>
       </button>
     </form>
   );

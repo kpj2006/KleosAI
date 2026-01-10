@@ -25,11 +25,11 @@ export default function Navbar() {
   // Initialization: Sync with LocalStorage and Session
   useEffect(() => {
     // Check Auth Status
-    const token = localStorage.getItem('finai_session');
+    const token = localStorage.getItem('kleosai_session');
     setIsLoggedIn(!!token);
 
     // Sync Currency Preference
-    const savedCurrency = localStorage.getItem('finai_currency') || 'INR';
+    const savedCurrency = localStorage.getItem('kleosai_currency') || 'INR';
     setCurrency(savedCurrency);
   }, [pathname]);
 
@@ -39,14 +39,14 @@ export default function Navbar() {
     setCurrency(newCurrency);
     
     // Save to local storage for persistence across pages
-    localStorage.setItem('finai_currency', newCurrency);
+    localStorage.setItem('kleosai_currency', newCurrency);
     
     // Dispatch a custom event to notify components like SpendingChart
     window.dispatchEvent(new Event('currencyChange'));
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('finai_session');
+    localStorage.removeItem('kleosai_session');
     window.location.href = '/login';
   };
 
@@ -58,13 +58,13 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800 transition-colors duration-500">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-emerald-500/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         
         {/* --- LEFT SECTION: BRANDING --- */}
         <div className="flex items-center gap-6">
-          <Link href="/" className="text-xl font-black tracking-tighter text-indigo-600 dark:text-indigo-400">
-            FINAI
+          <Link href="/" className="text-xl font-bold tracking-tight">
+            <span className="text-gradient">KLEOSAI</span>
           </Link>
           
           <div className="hidden lg:flex items-center gap-1">
@@ -72,10 +72,10 @@ export default function Navbar() {
               <Link
                 key={item.path}
                 href={item.path}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all ${
                   pathname === item.path
-                    ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
-                    : 'text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800'
+                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
                 }`}
               >
                 {item.icon}
@@ -89,15 +89,15 @@ export default function Navbar() {
         <div className="flex items-center gap-2 sm:gap-4">
           
           {/* 1. Global Currency Selector */}
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-indigo-500/30 transition-all">
-            <Globe size={14} className="text-indigo-500" />
+          <div className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:border-emerald-500/30 transition-all">
+            <Globe size={14} className="text-emerald-400" />
             <select 
               value={currency} 
               onChange={handleCurrencyChange} 
-              className="bg-transparent text-[10px] font-black uppercase outline-none cursor-pointer text-slate-600 dark:text-slate-300"
+              className="bg-transparent text-xs font-semibold outline-none cursor-pointer text-slate-300"
             >
               {Object.keys(CURRENCIES).map(code => (
-                <option key={code} value={code} className="dark:bg-slate-900">
+                <option key={code} value={code} className="bg-slate-900">
                   {code} ({CURRENCIES[code].symbol})
                 </option>
               ))}
@@ -106,33 +106,33 @@ export default function Navbar() {
 
           <ThemeToggle />
           
-          <div className="h-8 w-[1px] bg-slate-200 dark:bg-slate-800 mx-1 hidden md:block" />
+          <div className="h-8 w-[1px] bg-slate-700/50 mx-1 hidden md:block" />
 
           {/* 2. Authentication State Management */}
           {isLoggedIn ? (
             <div className="flex items-center gap-1 sm:gap-3">
-              <div className="hidden md:flex items-center gap-3 px-3 py-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
-                <div className="w-6 h-6 rounded-full bg-indigo-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
+              <div className="hidden md:flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-800/50 border border-emerald-500/20">
+                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20">
                   <User size={14} />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300">
+                <span className="text-xs font-semibold text-slate-300">
                   Team Heisenbucks
                 </span>
               </div>
 
               <button 
                 onClick={handleLogout} 
-                className="flex items-center gap-2 px-4 py-2 text-slate-500 hover:text-rose-500 transition-colors group"
+                className="flex items-center gap-2 px-4 py-2 text-slate-400 hover:text-rose-400 transition-colors group"
               >
                 <LogOut size={18} className="group-hover:translate-x-1 transition-transform" />
-                <span className="text-[10px] font-black uppercase tracking-widest hidden sm:block">Exit</span>
+                <span className="text-xs font-semibold hidden sm:block">Exit</span>
               </button>
             </div>
           ) : (
             <div className="flex items-center gap-2">
               <Link 
                 href="/login" 
-                className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-indigo-600 text-white rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-indigo-500/20"
+                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg font-semibold text-xs shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <LogIn size={16} />
                 Sign In
