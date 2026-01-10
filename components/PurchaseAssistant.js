@@ -44,10 +44,10 @@ export default function PurchaseAssistant({ userFinances, productDatabase, globa
       {/* Navigation Tabs */}
       <div className="flex gap-2 p-1.5 bg-slate-800/50 rounded-xl border border-emerald-500/10 w-fit">
         <button onClick={() => setViewMode('input')} className={`flex items-center gap-2 px-6 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all ${viewMode === 'input' ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/20' : 'text-slate-400'}`}>
-          <PlusCircle size={14} /> Add Product
+          <PlusCircle size={14} /> Enter Details
         </button>
         <button onClick={() => result && setViewMode('result')} disabled={!result} className={`flex items-center gap-2 px-6 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all ${!result ? 'opacity-30' : ''} ${viewMode === 'result' ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/20' : 'text-slate-400'}`}>
-          <Layout size={14} /> Analysis
+          <Layout size={14} /> View Results
         </button>
       </div>
 
@@ -75,7 +75,7 @@ export default function PurchaseAssistant({ userFinances, productDatabase, globa
             </select>
           </div>
           
-          <button onClick={handleRunAnalysis} className="btn-primary col-span-full py-5 rounded-xl uppercase tracking-wide">Run Strategy Analysis</button>
+          <button onClick={handleRunAnalysis} className="btn-primary col-span-full py-5 rounded-xl uppercase tracking-wide">Validate Purchase</button>
         </div>
       ) : (
         /* ANALYSIS VIEW */
@@ -84,7 +84,7 @@ export default function PurchaseAssistant({ userFinances, productDatabase, globa
             {result.status === 'SAFE TO BUY' ? <ShieldCheck size={40} /> : <XCircle size={40} />}
             <div>
               <h4 className="text-3xl font-bold uppercase tracking-tight">{result.status}</h4>
-              <p className="text-sm font-normal opacity-80">Analysis complete for {target.name}</p>
+              <p className="text-sm font-normal opacity-80">Assessment complete for {target.name}</p>
             </div>
           </div>
 
@@ -114,7 +114,7 @@ export default function PurchaseAssistant({ userFinances, productDatabase, globa
               );
             })}
           </div>
-          <button onClick={() => setViewMode('input')} className="flex items-center gap-2 text-emerald-400 font-semibold text-xs uppercase tracking-wide hover:underline transition-all"><RefreshCw size={12} /> Analyze New Purchase</button>
+          <button onClick={() => setViewMode('input')} className="flex items-center gap-2 text-emerald-400 font-semibold text-xs uppercase tracking-wide hover:underline transition-all"><RefreshCw size={12} /> Check Another Item</button>
         </div>
       )}
     </div>

@@ -73,10 +73,10 @@ export default function RegisterPage() {
       <div className="w-full max-w-lg relative animate-fade-in">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wide mb-6">
-            <Sparkles size={14} /> Join KleosAI
+            <Sparkles size={14} /> New Account
           </div>
-          <h1 className="text-5xl font-bold tracking-tight text-slate-100 mb-2">Create Account</h1>
-          <p className="text-slate-400 font-normal">Start your journey with Team Schrödinger Devs.</p>
+          <h1 className="text-5xl font-bold tracking-tight text-slate-100 mb-2">Begin Setup</h1>
+          <p className="text-slate-400 font-normal">Create your financial command center with Team Schrödinger Devs.</p>
         </div>
 
         <div className="card-modern p-8 md:p-12 rounded-3xl">
@@ -133,16 +133,16 @@ export default function RegisterPage() {
             </div>
 
             <button type="submit" disabled={isLoading} className="btn-primary w-full py-4 rounded-xl text-lg flex items-center justify-center gap-3 disabled:opacity-50">
-              {isLoading ? "Creating Account..." : "Sign Up"}
+              {isLoading ? "Setting up..." : "Create Account"}
               {!isLoading && <ArrowRight size={20} />}
             </button>
           </form>
         </div>
 
         <p className="mt-8 text-center text-sm font-normal text-slate-400">
-          Already have an account? 
+          Already registered?
           <Link href="/login" className="ml-2 font-semibold text-emerald-400 hover:text-emerald-300 uppercase tracking-tight">
-            Sign In
+            Log In
           </Link>
         </p>
       </div>

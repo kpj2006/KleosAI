@@ -47,7 +47,7 @@ export default function GoalsPage() {
       {/* 1. ADAPTIVE HEADER */}
       <header className="px-2 animate-fade-in">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wide mb-4">
-          <Sparkles size={12} /> Ambition Tracking
+          <Sparkles size={12} /> Target Management
         </div>
         <div className="flex items-center gap-4">
           <div className="p-4 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl shadow-lg shadow-emerald-500/20">
@@ -58,7 +58,7 @@ export default function GoalsPage() {
               Financial Goals
             </h1>
             <p className="text-slate-400 font-normal">
-              Strategy for <span className="text-emerald-400 font-semibold">Team Schrödinger Devs</span> in {globalCurrency}
+              Define objectives for <span className="text-emerald-400 font-semibold">Team Schrödinger Devs</span> in {globalCurrency}
             </p>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function GoalsPage() {
       <section className="animate-fade-in">
         <div className="card-modern p-10 rounded-3xl">
           <h2 className="text-2xl font-semibold text-slate-100 tracking-tight mb-8">
-            Create New Goal
+            Define New Target
           </h2>
           {/* Passing currency to the form to show the correct input symbol */}
           <Goalform onSubmit={addGoal} currency={globalCurrency} />
@@ -80,14 +80,14 @@ export default function GoalsPage() {
         <div className="flex items-center gap-3 px-4">
           <div className="w-1.5 h-6 bg-emerald-500 rounded-full" />
           <h2 className="text-xl font-semibold text-slate-100 uppercase tracking-tight">
-            Active Targets
+            Current Objectives
           </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-8">
           {goals && goals.length > 0 ? (
             goals.map((goal) => (
-              <div key={goal.id} className="glass-panel p-2 rounded-[3.5rem] hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 border border-white/5">
+              <div key={goal.id} className="glass-panel p-2 rounded-[0.5rem] hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 border border-white/5">
                 {/* FIX: Passing the globalCurrency prop to handle dynamic ₹ to $ conversion */}
                 <GoalProgress 
                   goal={goal} 

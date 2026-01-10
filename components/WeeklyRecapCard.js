@@ -55,9 +55,8 @@ export default function WeeklyRecapCard({
 
       <div className="mt-4 p-3 bg-purple-50 rounded-lg border border-purple-200">
         <p className="text-sm text-purple-700">
-          <span className="font-semibold">AI Insight:</span> Your spending is{" "}
-          {isPositiveTrend ? "improving" : "slightly higher"} compared to last
-          week.
+          <span className="font-semibold">Pattern:</span> Spending is{" "}
+          {isPositiveTrend ? "within range" : "elevated"} compared to previous period.
         </p>
       </div>
     </div>

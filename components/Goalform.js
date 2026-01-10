@@ -19,16 +19,16 @@ export default function GoalForm({ onSubmit }) {
     <form onSubmit={handleSubmit} className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-3">
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">Goal Name</label>
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">Target Name</label>
           <input
-            placeholder="e.g., Laptop"
+            placeholder="e.g., Laptop Purchase"
             className="input-modern"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="space-y-3">
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">Target Amount (₹)</label>
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-400 ml-1">Required Amount (₹)</label>
           <input
             type="number"
             placeholder="50000"
@@ -39,7 +39,7 @@ export default function GoalForm({ onSubmit }) {
         </div>
       </div>
       <button type="submit" className="btn-primary w-full py-5 rounded-xl flex items-center justify-center gap-3">
-        <PlusCircle size={22} /> <span className="uppercase tracking-wide">Set New Goal</span>
+        <PlusCircle size={22} /> <span className="uppercase tracking-wide">Create Target</span>
       </button>
     </form>
   );

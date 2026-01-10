@@ -69,15 +69,14 @@ export default function LandingPage() {
 
             {/* Modern headline with green/teal gradient */}
             <h1 className="text-6xl md:text-8xl font-bold tracking-tight text-slate-100 leading-[1.05]">
-              Make Smarter <br />
+              Turn Your Money <br />
               <span className="text-gradient">
-                Spending Decisions
-              </span> <br />
-              with AI
+                Into Momentum
+              </span>
             </h1>
 
             <p className="text-xl text-slate-400 font-normal max-w-lg leading-relaxed">
-              Stop guessing if you can afford it. Get instant, intelligent insights that help you spend confidently while crushing your financial goals.
+              Track, analyze, and act on your finances with clarity — powered by intelligent insights, not guesswork.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
@@ -100,7 +99,7 @@ export default function LandingPage() {
           <div className="relative">
             <div className="card-modern p-10 rounded-3xl relative overflow-hidden hover:scale-[1.02] transition-transform duration-500">
               <div className="flex items-center justify-between mb-10">
-                <h2 className="text-xl font-semibold text-slate-100 tracking-tight">Your Financial Overview</h2>
+                <h2 className="text-xl font-semibold text-slate-100 tracking-tight">Current Financial State</h2>
                 <div className="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20"><ShieldCheck size={24} /></div>
               </div>
 
@@ -131,9 +130,9 @@ export default function LandingPage() {
       <section className="py-24 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <span className="px-5 py-2 rounded-full bg-emerald-500/10 text-xs font-semibold text-emerald-400 uppercase tracking-wide border border-emerald-500/20 mb-6 inline-block">Features</span>
+            <span className="px-5 py-2 rounded-full bg-emerald-500/10 text-xs font-semibold text-emerald-400 uppercase tracking-wide border border-emerald-500/20 mb-6 inline-block">Core Capabilities</span>
             <h2 className="font-bold mb-6 text-4xl sm:text-5xl md:text-6xl text-slate-100 tracking-tight">
-              Everything You Need to <span className="text-gradient">Master Your Money</span>
+              Financial Control <span className="text-gradient">Without Complexity</span>
             </h2>
           </div>
 
@@ -156,13 +155,13 @@ export default function LandingPage() {
         <div className="max-w-5xl mx-auto">
           <div className="card-modern rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
             <h2 className="font-bold mb-8 text-4xl sm:text-5xl md:text-6xl text-slate-100 tracking-tight">
-              Ready to Take Control of <span className="text-gradient">Your Finances?</span>
+              Start Making <span className="text-gradient">Informed Decisions</span>
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/dashboard" className="btn-primary px-12 py-5 rounded-xl text-lg">Get Started Free</Link>
-              <button className="btn-secondary px-12 py-5 rounded-xl text-lg">Watch Demo</button>
+              <Link href="/dashboard" className="btn-primary px-12 py-5 rounded-xl text-lg">Access Dashboard</Link>
+              <button className="btn-secondary px-12 py-5 rounded-xl text-lg">View Demo</button>
             </div>
-            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mt-10">No credit card required • Free forever plan available</p>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mt-10">No payment required • Always free tier included</p>
           </div>
         </div>
       </section>
@@ -170,7 +169,7 @@ export default function LandingPage() {
       {/* --- FOOTER --- */}
       <footer className="border-t border-emerald-500/10 py-16 px-6 text-center">
         <span className="text-3xl font-bold text-gradient tracking-tight mb-4 inline-block">KLEOSAI</span>
-        <p className="text-slate-500 font-semibold uppercase tracking-wide text-xs">© 2025 KleosAI • Intelligent Financial Planning</p>
+        <p className="text-slate-500 font-semibold uppercase tracking-wide text-xs">© 2026 KleosAI • Intelligent Financial Planning</p>
       </footer>
     </div>
   );

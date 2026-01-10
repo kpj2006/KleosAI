@@ -21,7 +21,7 @@ export default function SubscriptionCard({
         <div>
           <h4 className="text-lg font-semibold text-gray-900">{name}</h4>
           <p className="text-sm text-gray-500 capitalize">
-            {billingCycle} billing
+            {billingCycle} cycle
           </p>
         </div>
         <span
@@ -42,14 +42,14 @@ export default function SubscriptionCard({
 
         <div className="flex items-center gap-2 text-sm text-gray-600">
           <Calendar className="w-4 h-4 text-gray-400" />
-          <span>Next billing: {nextBilling}</span>
+          <span>Renews: {nextBilling}</span>
         </div>
       </div>
 
       {status === "expiring" && (
         <div className="mt-4 flex items-start gap-2 p-3 bg-orange-50 rounded-lg border border-orange-200">
           <AlertCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
-          <p className="text-xs text-orange-700">Renews in 3 days</p>
+          <p className="text-xs text-orange-700">Expires in 3 days</p>
         </div>
       )}
     </div>

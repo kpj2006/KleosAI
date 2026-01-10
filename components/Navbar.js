@@ -125,7 +125,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-4 py-2 text-slate-400 hover:text-rose-400 transition-colors group"
               >
                 <LogOut size={18} className="group-hover:translate-x-1 transition-transform" />
-                <span className="text-xs font-semibold hidden sm:block">Exit</span>
+                <span className="text-xs font-semibold hidden sm:block">Log Out</span>
               </button>
             </div>
           ) : (
@@ -135,7 +135,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg font-semibold text-xs shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <LogIn size={16} />
-                Sign In
+                Access Account
               </Link>
             </div>
           )}
