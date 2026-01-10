@@ -111,7 +111,7 @@ export default function RegisterPage() {
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   required 
-                  placeholder="admin@Schrödinger Devs.com"
+                  placeholder="admin@schrodingerdevs.com"
                   className="input-modern pl-12"
                 />
               </div>
