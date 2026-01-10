@@ -7,7 +7,7 @@ export function useGoal(transactions = []) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('finai_goals');
+      const saved = localStorage.getItem('kleosai_goals');
       // Standardized default data
       setGoals(saved ? JSON.parse(saved) : [{ id: 'g1', name: 'Laptop', target: 1000000 }]);
       setIsLoaded(true);
@@ -16,7 +16,7 @@ export function useGoal(transactions = []) {
 
   useEffect(() => {
     if (isLoaded && typeof window !== 'undefined') {
-      localStorage.setItem('finai_goals', JSON.stringify(goals));
+      localStorage.setItem('kleosai_goals', JSON.stringify(goals));
     }
   }, [goals, isLoaded]);
 
