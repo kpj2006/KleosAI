@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { PlusCircle, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 // FIX: Import CURRENCIES to handle dynamic symbols
 import { CURRENCIES } from '../utils/currencyConstants';
-import { CATEGORIES } from '../utils/categories';
 
 export default function TransactionForm({ onSubmit, currency = 'INR' }) {
   const [description, setDescription] = useState('');
@@ -101,24 +100,14 @@ export default function TransactionForm({ onSubmit, currency = 'INR' }) {
             Category
           </label>
           <select 
-            className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-slate-100 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all cursor-pointer hover:bg-slate-800/70 hover:border-slate-600/50 appearance-none bg-no-repeat bg-right pr-10"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2334d399'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
-              backgroundSize: '1.5rem',
-              backgroundPosition: 'right 0.75rem center'
-            }}
+            className="input-modern font-semibold"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            {CATEGORIES.map((cat) => (
-              <option 
-                key={cat} 
-                value={cat}
-                className="bg-slate-800 text-slate-100 py-3 hover:bg-emerald-500/20"
-              >
-                {cat}
-              </option>
-            ))}
+            <option value="Savings">Savings</option>
+            <option value="Food">Food</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Other">Other</option>
           </select>
         </div>
       </div>
