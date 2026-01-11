@@ -139,11 +139,14 @@ export default function LoginPage() {
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wide mb-6">
             <Sparkles size={14} /> Secure Access
+            <Sparkles size={14} /> Secure Access
           </div>
           <h1 className="text-5xl font-bold tracking-tight text-slate-100 mb-2">
             Access Your Account
+            Access Your Account
           </h1>
           <p className="text-slate-400 font-normal">
+            Sign in to view your financial dashboard.
             Sign in to view your financial dashboard.
           </p>
         </div>
@@ -168,7 +171,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="admin@schrodingerdevs.com"
+                  placeholder="admin@heisenbucks.com"
                   className="input-modern pl-12"
                 />
               </div>
